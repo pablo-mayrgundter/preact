@@ -6,14 +6,16 @@ import { useLocation } from 'preact-iso'
  */
 export function Header() {
   const { url } = useLocation()
-
+  const rootPrefix = import.meta.env.BASE_URL
+  const rootLink = rootPrefix
+  const notFoundLink = `${rootPrefix}/404`
   return (
     <header>
       <nav>
-        <a href="/" class={url === '/' && 'active'}>
+        <a href={rootLink} class={url === rootLink && 'active'}>
           Home
         </a>
-        <a href="/404" class={url === '/404' && 'active'}>
+        <a href={notFoundLink} class={url === notFoundLink && 'active'}>
           404
         </a>
       </nav>
